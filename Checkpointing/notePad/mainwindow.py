@@ -11,6 +11,5 @@ import os
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        path=os.path.abspath("form.ui")
-        uic.loadUi(path, self)
+        uic.loadUi(r"form.ui", self)
 

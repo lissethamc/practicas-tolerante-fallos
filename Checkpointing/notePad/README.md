@@ -78,7 +78,7 @@ Creamos nuestro servicio con el siguiente comando en la terminal de Linux `sudo 
 
 ```systemd
     [Unit]
-    Description=My test service
+    Description=Checkpointing notepad
     After=multi-user.target
     StartLimitIntervalSec=0
     [Service]

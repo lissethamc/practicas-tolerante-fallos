@@ -39,6 +39,7 @@
      <string>Opciones</string>
     </property>
     <addaction name="actionGuardar"/>
+    <addaction name="actionNuevo"/>
    </widget>
    <addaction name="menuOpciones"/>
   </widget>
@@ -49,6 +50,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionNuevo">
+   <property name="text">
+    <string>Nuevo</string>
    </property>
   </action>
  </widget>

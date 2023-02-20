@@ -83,12 +83,23 @@ Creamos nuestro servicio con el siguiente comando en la terminal de Linux `sudo 
     StartLimitIntervalSec=0
     [Service]
     Environment=DISPLAY=:0
-    Environment=XAUTHORITY=/home/<lissethamc>/.Xauthority
+    Environment=XAUTHORITY=/home/lissethamc/.Xauthority
     Type=simple
     Restart=on-failure
     RestartSec=1
-    User=<lissethamc>
+    User=lissethamc
+    ExecStart=/bin/python3 -u /home/lissethamc/Desktop/2023A/practicas-tolerante-fallos/Checkpointing/notePad/main.py
+    WorkingDirectory=/home/lissethamc/Desktop/2023A/practicas-tolerante-fallos/Checkpointing/notePad/
+    [Install]
+    WantedBy=graphical.target
+
 
 ```
-Una vez con ese servicio ponemos los siguientes comandos en la consola para utilizar el servicio
+Una vez con ese servicio ponemos los siguientes comandos en la consola para poder utilizarlo 
+`sudo systemctl daemon-reload` y
+`sudo systemctl restart test.service`.
+
+Al revisar el estatus de nuestro servicio con `sudo systemctl status test.service` obtenemos la siguiente salida:
+![img4](https://github.com/lissethamc/practicas-tolerante-fallos/blob/main/Checkpointing/notePad/img4.png)
+
 

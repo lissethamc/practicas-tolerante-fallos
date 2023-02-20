@@ -11,7 +11,7 @@ def autoSave():
     widget.statusBar().showMessage("autosaved!")
     QtTest.QTest.qWait(500)
     retrievedText = widget.plainTextEdit.toPlainText()
-    print(retrievedText)
+    #print(retrievedText)
 
     newFile = open("autosaved.txt","w")
     newFile.write(retrievedText)
@@ -39,6 +39,10 @@ def scheduledMethods():
 def newFile():
     widget.plainTextEdit.clear()
 
+def is_closed():
+    output = ("python3 main.py", "python main.py")[os.system("cd /home > nul 2>nul")] #0 for os.system command right, it means we're in linux
+    os.system(f"{output}")
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     widget = MainWindow()
@@ -47,4 +51,6 @@ if __name__ == "__main__":
     widget.show()
     widget.actionGuardar.triggered.connect(saveFile)
     widget.actionNuevo.triggered.connect(newFile)
+    app.aboutToQuit.connect(is_closed)
     sys.exit(app.exec())
+    

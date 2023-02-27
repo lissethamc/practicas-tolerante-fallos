@@ -101,5 +101,19 @@ resivirá datos mediante la señal declarada como any_signal:
     any_signal=QtCore.pyqtSignal(int)
     operation_signal=QtCore.pyqtSignal(int)
 ```
-
+any_signal manda una señal a la ventana para que haga dos cosas:
+- mande una señal de error y muestre que hubo un error en pantalla
+- ponga el resultado en pantalla
+``` python
+def resultado(self, value):
+        val=int(value)
+        if val==0:
+            print("entro")
+            self.answer.setText("No Enteros")
+        if val==-1:
+            self.answer.setText("error")
+        else:
+            self.answer.setText(str(val))
+```
+donde value es el valor que emite la señal en el metodo run()
 

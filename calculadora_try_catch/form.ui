@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>471</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Consolas</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="answer">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>80</y>
+      <width>381</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>20</pointsize>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>Resultado</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="input1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>180</y>
+      <width>113</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Calculadora</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="input2">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>180</y>
+      <width>113</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>140</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Input 1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>140</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>input 2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="suma">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>250</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="resta">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>250</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mult">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>250</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>*</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="div">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>320</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>/</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="enter">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>320</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enter</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="op">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>180</y>
+      <width>49</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

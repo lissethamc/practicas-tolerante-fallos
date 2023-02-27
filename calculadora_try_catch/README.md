@@ -43,7 +43,7 @@ el manejo de errores se da cuando no tenemos operador pero si entradas y cuando 
   ![image](https://user-images.githubusercontent.com/33168405/221624357-870f1d34-beb5-495d-9626-0f4ee1e9aad2.png)
 
 
-la rutina que maneja los errores es la siguiente:
+la rutina que maneja los errores es la siguiente (dentro de threadClass.py):
 ```python
 def run(self):#citando la documentacion de QT "You can reimplement this function to facilitate advanced thread management. Returning from this method will end the execution of the thread."
         print(f"starting thread: operacion: {self.value}")#informacion sobre que "hilo se esta iniciando"
@@ -64,7 +64,7 @@ justamente podemos observar que realiza un bloque try catch con una funcion, est
 es importante que se maneje en esta parte pero tambien adentro para detectar que tipo de error dió, tambien se podria extender el bloque try catch para
 manejar distintos errores
 
-la funcion que opera es la siguiente:
+la funcion que opera es la siguiente (dentro de threadClass.py):
 
 ```python
 def operation(self,opValue):
@@ -95,13 +95,13 @@ def operation(self,opValue):
 podemos aprecia que es bastante basica pero lo que se busca es simplemente detectar errores
 esto se hace con una varibale dentro del objeto llamada "error"
 esta clase ademas de manejar el hilo, emite señales que manipulan los objetos de la interfaz para mostrar resultados, la señal es enlazada a una función la cual
-resivirá datos mediante la señal declarada como any_signal:
+resivirá datos mediante la señal declarada como any_signal (dentro de threadClass.py):
 ``` python
  class threadClass(QtCore.QThread):
     any_signal=QtCore.pyqtSignal(int)
     operation_signal=QtCore.pyqtSignal(int)
 ```
-any_signal manda una señal a la ventana para que haga dos cosas:
+any_signal manda una señal a la ventana para que haga dos cosas (dentro de mainWindow.py):
 - mande una señal de error y muestre que hubo un error en pantalla
 - ponga el resultado en pantalla
 ``` python
@@ -116,4 +116,3 @@ def resultado(self, value):
             self.answer.setText(str(val))
 ```
 donde value es el valor que emite la señal en el metodo run()
-

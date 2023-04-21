@@ -34,9 +34,57 @@ No todas las distribuciones de ROS son compatibles con Docker pero la mayoría l
 
 Es posible utilizar Docker con prácticamente cualquier distribución de Linux y las imágenes de Docker para ROS suelen estar construidas para Ubuntu. Si se usa una distrubición de Linux diferente, es posible que sea necesario ajustar la configuración de Docker y ROS para asegurarnos del correcto funcionamiento.
 
+**Nota**: No es necesario tener instalado ROS de antemano en el sistema host para poder correrlo en un entorno Docker, ese es el objetivo de instalar Docker
+
+###### Instalación de Docker en Linux
+
 Primero debemos comprobar si tenemos instalado Docker, para ello ejecutamos el siguiente comando en una terminal
 
 ```shell
 docker --version
 ```
 De tener Docker instalado, debemos ver una salida que indica la versión de docker instalado, sino el comando dará un mensaje de error que indica que el comando "docker" no se encuentra en el sistema.
+
+Para instalar Docker en caso de ser necesario
+
+1. Actualizar los paquetes del sistema:
+```shell
+sudo apt-get update
+```
+
+2. Instalar los paquetes necesarios utilizar paquetes via HTTPS:
+```shell
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+
+3. Descargar e importar la clave GPG oficial de Docker:
+```shell
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+4. Agregar el repositorio de Docker a las fuentes de paquetes de APT:
+```shell
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+5. Actualizar de nuevo los paquetes del sistema para que sea posible reconocer los paquetes de Docker recién agregados
+```shell
+sudo apt-get update
+```
+
+6. Instalar Docker
+```shell
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
+Podemos confirmar su instalación ejecutando el comando
+```shell
+docker run hello-world
+```
+Esto nos descarga una imagen de prueba y la ejecuta en un contenedor de Docker, mostrando su correcto funcionamiento.
+
+###### Descargar y correr una imagen de ROS en Docker
+
+Para poder trabajar con ROS, necesitamos una imagen de Docker, es decir un sistema operativo que tenga pre instalado ROS. Podemos descargar una imagen desde Docker Hub, Por ejemplo, podemos descargar la última imagen de ROS Melodic, corremos el siguiente comando en una terminal (es probable que estos comandos necesiten permisos de superusuario):
+
+```shell
+docker pull ros:melodic
+```

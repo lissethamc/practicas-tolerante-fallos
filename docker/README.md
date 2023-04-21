@@ -113,6 +113,7 @@ Dentro del contenedor ahora podemos ejecutar el comando
 roscore
 ```
 Esto debe funcionar pues la imagen que descargamos y ejecutamos ya tenía instalado ROS, pero también nos mantendrá la consola ocupada, por lo que para el resto de comandos debemos ejecutarlos en otra terminal, **sin cerrar la terminal actual**. 
+![image](https://user-images.githubusercontent.com/33168405/233742393-ff24e742-4f41-44e4-b7e2-f3a880bbf048.png)
 
 Podemos corroborar las imágenes que tenemos descargadas con el comando
 ```shell
@@ -147,9 +148,22 @@ Una vez hecho esto en la segunda terminal podemos crear el nodo talker que publi
 ```shell
 $ rosrun roscpp_tutorials talker
 ```
+![image](https://user-images.githubusercontent.com/33168405/233743560-edfd58bb-d9dc-4fdd-a2ec-f36926f31ba5.png)
 
 Para ver los mensajes que publica el nodo _talker_ podemos abrir una tercera terminal y acceder al mismo contenedor de la misma manera que a la segunda, y en esta tercer teminal ejecutar el comando:
 ```shell
 $ rostopic echo /chatter
 ```
-**Por corregir**: de forma default, los contenedores se "apagan" sino están ejecutando nada y la terminal se cierra, se ejecuta "exit", la computadora se apaga o se temina el proceso y no es posible acceder a ese mismo contenedor. No es posible volver a correrlo pues dice que el nombre ya esti ejecutarlo á en uso npues dice que no esá corriendo. Es posible agregar una bandera en la creación del contenedor para indicar que es necesario que se continue su ejecución en segundo plano, pero depende de si este es el comportamiento esperado, aún estoy documentándome en esta parte. De momento, si el contenedor se "apaga", es posible volver a ejecutarlo reiniciándolo: obteniendo su ID a través de docker ps -a y luego docker restart <CONTAINER ID> https://stackoverflow.com/questions/29599632/container-is-not-running
+![image](https://user-images.githubusercontent.com/33168405/233743574-397faeef-169e-4b74-91ed-a2f49ea9705c.png)
+
+Para salir del contenedor basta con ejecutar 
+```shell
+$ exit
+```
+
+**Nota**: de forma default, los contenedores se "apagan" sino están ejecutando nada y la terminal se cierra, se ejecuta "exit", la computadora se apaga o se temina el proceso y no es posible acceder a ese mismo contenedor de forma normal pues dice que el nombre yá en uso al querer correrlo o dice que no esá corriendo al querer ejecutarlo. Es posible agregar una bandera en la creación del contenedor para indicar que es necesario que se continue su ejecución en segundo plano, pero depende de si este es el comportamiento esperado, aún estoy documentándome en esta parte. De momento, si el contenedor se "apaga", es posible volver a ejecutarlo reiniciándolo: obteniendo su ID a través de:
+```shell
+docker ps -a
+docker restart <CONTAINER ID>
+``` 
+https://stackoverflow.com/questions/29599632/container-is-not-running

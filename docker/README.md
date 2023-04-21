@@ -95,10 +95,56 @@ En caso de querer corroborar la descarga o el resto de imágenes descargadas es 
 ```shell
 sudo docker images
 ```
-Una vez descargada la imagen, para crear y ejecutar un contenedor interactivo, debemos usar el siguiente comando, el parámetro "-it" indica que queremos que se muestre una consola para que podamos trabajar en ella
+Una vez descargada la imagen, para crear y ejecutar un contenedor interactivo, debemos usar el siguiente comando: 
 
 ```shell
-sudo docker run -it ros:melodic
+sudo docker run -it --name *my_melodic_container* ros:melodic
 ```
-podemos notar que el nombre del usuario y del equipo en la consola cambian al correr el comando pues ahora nos encontramos dentro del contenedor de Docker 
+El nombre *"my_melodic_container"* es un _placeholder_ que puede ser elegido a voluntad del usuario, puede ser omitido y Docker le asignará un nombre aleatorio que deberá consultar después para poder acceder a él. En caso de ser omitido, también deberá omitir la bandera "--name" y el comando funcionará igualmente. El parámetro "-it" indica que queremos una sesión interactiva, es decir, que se muestre una consola para que podamos trabajar en ella. 
+
+Podemos notar que el nombre del usuario y del equipo en la consola cambian al correr el comando pues ahora nos encontramos dentro del contenedor de Docker 
+
+Dentro del contenedor ahora podemos ejecutar el comando
+```shell
+roscore
+```
+Esto debe funcionar pues la imagen que descargamos y ejecutamos ya tenía instalado ROS, pero también nos mantendrá la consola ocupada, por lo que para el resto de comandos debemos ejecutarlos en otra terminal, **sin cerrar la terminal actual**. 
+
+Podemos corroborar las imágenes que tenemos descargadas con el comando
+```shell
+sudo docker ps
+```
+Este comando además nos enlista los nombres con los que fueron creados los contenedores, necesario para le siguiente paso.
+
+
+Para abir el mismo contenedor en una nueva terminal ejecutamos el siguiente comando:
+```shell
+sudo docker exec -it *my_melodic_container* bash
+```
+Siendo *my_melodic_container* el contenedor que hayamos nombrado nostros al inicio, o el que haya nombrado Docker y que hayamos consultado através del paso anterior.
+
+Ahora es necesario incializar el ambiente de ROS en la terminal actual, para ello ejecutamos el siguiente comando:
+```shell
+source /opt/ros/<distro>/setup.bash
+```
+reemplazando *`<distro>` con el nombre de la distribución de ROS que estamos usando*
+
+Dentro de la segunda terminal hay que asegurarnos que estén los paquetes necesarios para el talker y chatter, por lo que ejecutaremos los siguientes comandos
+
+```shell
+$ sudo apt-get update
+$ sudo apt-get install -y ros-<ROS_VERSION>-roscpp-tutorials
+$ source /opt/ros/<ROS_VERSION>/setup.bash
+```
+
+Una vez hecho esto en la segunda terminal podemos crear el nodo talker que publicará mensajes en el tópico *`/chatter`* con el siguiente comando:
+
+```shell
+$ rosrun roscpp_tutorials talker
+```
+
+Para ver los mensajes que publica el nodo _talker_ podemos abrir una tercera terminal y acceder al mismo contenedor de la misma manera que a la segunda, y en esta tercer teminal ejecutar el comando:
+```shell
+$ rostopic echo /chatter
+```
 

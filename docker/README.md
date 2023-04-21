@@ -95,6 +95,9 @@ En caso de querer corroborar la descarga o el resto de imágenes descargadas es 
 ```shell
 sudo docker images
 ```
+![Screenshot from 2023-04-21 16-41-01](https://user-images.githubusercontent.com/33168405/233739088-f2b9e72b-862e-4993-9dd6-413a6121c19d.png)
+
+
 Una vez descargada la imagen, para crear y ejecutar un contenedor interactivo, debemos usar el siguiente comando: 
 
 ```shell
@@ -103,6 +106,7 @@ sudo docker run -it --name my_melodic_container ros:melodic
 El nombre **"my_melodic_container"** es un _placeholder_ que puede ser elegido a voluntad del usuario, puede ser omitido y Docker le asignará un nombre aleatorio que deberá consultar después para poder acceder a él. En caso de ser omitido, también deberá omitir la bandera "--name" y el comando funcionará igualmente. El parámetro "-it" indica que queremos una sesión interactiva, es decir, que se muestre una consola para que podamos trabajar en ella. 
 
 Podemos notar que el nombre del usuario y del equipo en la consola cambian al correr el comando pues ahora nos encontramos dentro del contenedor de Docker 
+![image](https://user-images.githubusercontent.com/33168405/233739333-08c5a115-71f0-4e85-ba6f-01bb0d1f030d.png)
 
 Dentro del contenedor ahora podemos ejecutar el comando
 ```shell
@@ -112,16 +116,17 @@ Esto debe funcionar pues la imagen que descargamos y ejecutamos ya tenía instal
 
 Podemos corroborar las imágenes que tenemos descargadas con el comando
 ```shell
-sudo docker ps
+sudo docker ps -a
 ```
 Este comando además nos enlista los nombres con los que fueron creados los contenedores, necesario para le siguiente paso.
+![image](https://user-images.githubusercontent.com/33168405/233739800-12017ea2-11e1-47b6-a46c-3edfe7b6cc93.png)
 
 
 Para abir el mismo contenedor en una nueva terminal ejecutamos el siguiente comando:
 ```shell
 sudo docker exec -it my_melodic_container bash
 ```
-Siendo *`my_melodic_container* el contenedor que hayamos nombrado nostros al inicio, o el que haya nombrado Docker y que hayamos consultado através del paso anterior.
+Siendo **`my_melodic_container`** el contenedor que hayamos nombrado nostros al inicio, o el que haya nombrado Docker y que hayamos consultado através del paso anterior.
 
 Ahora es necesario incializar el ambiente de ROS en la terminal actual, para ello ejecutamos el siguiente comando:
 ```shell
@@ -147,4 +152,4 @@ Para ver los mensajes que publica el nodo _talker_ podemos abrir una tercera ter
 ```shell
 $ rostopic echo /chatter
 ```
-
+**Por corregir**: de forma default, los contenedores se "apagan" sino están ejecutando nada y la terminal se cierra, se ejecuta "exit", la computadora se apaga o se temina el proceso y no es posible acceder a ese mismo contenedor. Es posible agregar una bandera en la creación del contenedor para indicar que es necesario que se continue su ejecución en segundo plano, pero depende de si este es el comportamiento esperado, aún estoy documentándome en esta parte. De momento, si el contenedor se "apaga", es posible volver a ejecutarlo reiniciándolo: obteniendo su ID a través de docker ps -a y luego docker restart <CONTAINER ID> https://stackoverflow.com/questions/29599632/container-is-not-running

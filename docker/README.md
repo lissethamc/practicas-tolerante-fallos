@@ -119,9 +119,9 @@ Este comando además nos enlista los nombres con los que fueron creados los cont
 
 Para abir el mismo contenedor en una nueva terminal ejecutamos el siguiente comando:
 ```shell
-sudo docker exec -it *my_melodic_container* bash
+sudo docker exec -it my_melodic_container bash
 ```
-Siendo *my_melodic_container* el contenedor que hayamos nombrado nostros al inicio, o el que haya nombrado Docker y que hayamos consultado através del paso anterior.
+Siendo *`my_melodic_container* el contenedor que hayamos nombrado nostros al inicio, o el que haya nombrado Docker y que hayamos consultado através del paso anterior.
 
 Ahora es necesario incializar el ambiente de ROS en la terminal actual, para ello ejecutamos el siguiente comando:
 ```shell

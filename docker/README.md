@@ -86,5 +86,19 @@ Esto nos descarga una imagen de prueba y la ejecuta en un contenedor de Docker, 
 Para poder trabajar con ROS, necesitamos una imagen de Docker, es decir un sistema operativo que tenga pre instalado ROS. Podemos descargar una imagen desde Docker Hub, Por ejemplo, podemos descargar la última imagen de ROS Melodic, corremos el siguiente comando en una terminal (es probable que estos comandos necesiten permisos de superusuario):
 
 ```shell
-docker pull ros:melodic
+sudo docker pull ros:melodic
 ```
+Si el comando es correcto, veremos una descarga. La versión puede variar por la necesaria.
+
+En caso de querer corroborar la descarga o el resto de imágenes descargadas es posible enlistarlas con
+
+```shell
+sudo docker images
+```
+Una vez descargada la imagen, para crear y ejecutar un contenedor interactivo, debemos usar el siguiente comando, el parámetro "-it" indica que queremos que se muestre una consola para que podamos trabajar en ella
+
+```shell
+sudo docker run -it ros:melodic
+```
+podemos notar que el nombre del usuario y del equipo en la consola cambian al correr el comando pues ahora nos encontramos dentro del contenedor de Docker 
+

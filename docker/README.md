@@ -100,7 +100,7 @@ Una vez descargada la imagen, para crear y ejecutar un contenedor interactivo, d
 ```shell
 sudo docker run -it --name my_melodic_container ros:melodic
 ```
-El nombre *"my_melodic_container"* es un _placeholder_ que puede ser elegido a voluntad del usuario, puede ser omitido y Docker le asignará un nombre aleatorio que deberá consultar después para poder acceder a él. En caso de ser omitido, también deberá omitir la bandera "--name" y el comando funcionará igualmente. El parámetro "-it" indica que queremos una sesión interactiva, es decir, que se muestre una consola para que podamos trabajar en ella. 
+El nombre **"my_melodic_container"** es un _placeholder_ que puede ser elegido a voluntad del usuario, puede ser omitido y Docker le asignará un nombre aleatorio que deberá consultar después para poder acceder a él. En caso de ser omitido, también deberá omitir la bandera "--name" y el comando funcionará igualmente. El parámetro "-it" indica que queremos una sesión interactiva, es decir, que se muestre una consola para que podamos trabajar en ella. 
 
 Podemos notar que el nombre del usuario y del equipo en la consola cambian al correr el comando pues ahora nos encontramos dentro del contenedor de Docker 
 

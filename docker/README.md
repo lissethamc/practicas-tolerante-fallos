@@ -1,4 +1,4 @@
-# Implementación de Docker con ROS
+# Implementación de HelloWorld Docker con ROS
 
 #### 218292645 | Lisseth Abigail Martínez Castillo  :octocat:
 
@@ -18,6 +18,21 @@ Entre las herramientas que proporciona ROS son las de visualización, simulació
 De las herramientas que proporciona ROS para el manejo de recursos en los sistemas robóticos, es posible considerar sensores, actuadores, planificación de movimiento, entre otros; por lo que en vez de desarrollar software personalizado para cada de estos componentes, es posible usar los servicios de ROS para integrarlos y construir sistemas más complejos. Es decir, nos proporciona una capa de abstracción que permite centrarnos en el desarrollo específico del robot o sistema en vez de preocuparnos por los detalles de bajo nivel o sistema operativo subyacente.
 
 ### Implementación
+
+Docker puede ser utilizado con diferentes distribuciones de ROS, algunas de las versiones compatibles con Docker son:
+* ROS Kinetic Kame
+* ROS Melodic Morenia
+* ROS Noetic Ninjemys
+* ROS2 Dasing Diademata
+* ROS2 ELoquent Elusor
+* ROS2 Fosy Fitzroy
+Entre otros
+
+Es necesario primero asegurarnos que la imagen de Docker es compatible con la distribución de Linux que estamos usando, aunque las imágenes de Docker para ROS suelen ser para una distribucion de Linux en especifica como Ubuntu.
+
+No todas las distribuciones de ROS son compatibles con Docker pero la mayoría lo son, se recomienda usar una versión de ROS que tenga soporte activo y se actualice regularmente. Si se usa una versión de ROS menos común es probable que no haya una versión de Docker disponible o se deba de construir una imagen personalizada.
+
+Es posible utilizar Docker con prácticamente cualquier distribución de Linux y las imágenes de Docker para ROS suelen estar construidas para Ubuntu. Si se usa una distrubición de Linux diferente, es posible que sea necesario ajustar la configuración de Docker y ROS para asegurarnos del correcto funcionamiento.
 
 Primero debemos comprobar si tenemos instalado Docker, para ello ejecutamos el siguiente comando en una terminal
 

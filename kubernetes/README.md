@@ -25,7 +25,7 @@ En Kubernetes, los balanceadores de carga se utilizan para exponer los servicios
 ###### Prerrequisitos
 Para poder administrar Kubernetes en DigitalOcean desde consola en este reporte fue necesario instalar [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/), [doctl](https://docs.digitalocean.com/reference/doctl/) y [Docker Engine](https://docs.docker.com/engine/)
 
-######## Kubernetes en DigitalOcean
+###### Kubernetes en DigitalOcean
 Para la implementación, una vez creada una cuenta en DigitalOcean, en la página principal nos da la opción de hacer un deploy en un ambiente de contenedores, seleccionaremos esa opción, una vez dentro podemos ajustar los parámetros, por ejemplo es importante seleccionar la locación del datacenter pues juega un papel importante en la rapidez de respuesta de las peticiones
 ![image](https://user-images.githubusercontent.com/33168405/233978343-b40d361a-531a-454f-a774-40606007cdb9.png)
 
@@ -41,14 +41,38 @@ Puede tomar un tiempo en configurarse el entorno pero estará listo cuando apare
 ![image](https://user-images.githubusercontent.com/33168405/233980088-50d2f84f-a127-4db2-b43d-927421a03189.png)
 
 Es importante tener a la mano el cluster ID pues se usará para pasos siguientes.
-######## Deploy
-Ahora es necesario autenticarnos con (doctl)[https://docs.digitalocean.com/reference/doctl/how-to/install/]
+###### Deploy
+Ahora es necesario autenticarnos con [doctl](https://docs.digitalocean.com/reference/doctl/)
 Es necesario tener los archivos que utilizaremos en una sola carpeta, abrimos una consola de comandos en esa carpeta, en esa consola ejecutamos el comando
 
 ```shell
 docker build -t my-python-app .
 ```
 
+Después de eso vamos a crear la imagen del contenedor que se subirá, lo subimos a nuestro proyecto en digital ocean y creamos su deployment cambiando **`<your-registry-name>`** por el nombre de nuestro clúster, en este caso sera python-flask-app
 
+```shell
+doctl registry create Python-flask-app
+docker tag my-python-app registry.digitalocean.com/<your-registry-name>/my-python-app
+docker push registry.digitalocean.com/<your-registry-name>/my-python-app
+  
+doctl registry kubernetes-manifest | kubectl apply -f -
+kubectl create deployment my-python-app --image=registry.digitalocean.com/<your-registry-name>/my-python-app
+```
 
+![image](https://user-images.githubusercontent.com/33168405/233983845-31f4eea9-d887-49a9-840d-2b4020e60f55.png)
 
+Una vez hecho esto podemos hacer una réplica con el comando
+```shell
+kubectl scale deployment/my-python-app --replicas=2
+kubectl create deployment my-python-app --image=registry.digitalocean.com/<your-registry-name>/my-python-app
+```
+Y para añadir el servicio de balanceador de cargas usar el siguiente comando
+```shell
+kubectl expose deployment my-python-app --type=LoadBalancer --port=80 --target-port=80
+```
+Y este comando nos permite monitorear el estado del balanceador de cargas
+```shell
+doctl compute load-balancer list --format Name,Created,IP,Status
+```
+![image](https://user-images.githubusercontent.com/33168405/233984350-25647672-a511-48fd-93b1-cb767dd7e393.png)

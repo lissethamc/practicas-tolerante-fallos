@@ -78,4 +78,6 @@ doctl compute load-balancer list --format Name,Created,IP,Status
 ![image](https://user-images.githubusercontent.com/33168405/233984350-25647672-a511-48fd-93b1-cb767dd7e393.png)
 
 Al ingresar a la IP podemos ver el deploy de nuestra App
+
+
 ![image](https://user-images.githubusercontent.com/33168405/233985024-79885c9a-1b70-4954-88c0-790641fd12b9.png)

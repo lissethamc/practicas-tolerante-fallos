@@ -22,4 +22,33 @@ En Kubernetes, los balanceadores de carga se utilizan para exponer los servicios
 
 ## Desarrollo
 
+###### Prerrequisitos
+Para poder administrar Kubernetes en DigitalOcean desde consola en este reporte fue necesario instalar [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/), [doctl](https://docs.digitalocean.com/reference/doctl/) y [Docker Engine](https://docs.docker.com/engine/)
+
+######## Kubernetes en DigitalOcean
+Para la implementación, una vez creada una cuenta en DigitalOcean, en la página principal nos da la opción de hacer un deploy en un ambiente de contenedores, seleccionaremos esa opción, una vez dentro podemos ajustar los parámetros, por ejemplo es importante seleccionar la locación del datacenter pues juega un papel importante en la rapidez de respuesta de las peticiones
+![image](https://user-images.githubusercontent.com/33168405/233978343-b40d361a-531a-454f-a774-40606007cdb9.png)
+
+La selección de parámetros varía las cuotas de uso, por ejemplo el autoescalado indicará si la capacidad de pods seleccionada inicialmente es insuficiente, si se crean nuevos pods. Es importante tener en cuenta el sistema que será necesario pues es probable que se apliquen cargos
+
+![image](https://user-images.githubusercontent.com/33168405/233978797-6d03368f-a74a-4895-b6cd-a73f948b0b87.png)
+
+En la parte de abajo podemos asignar este cluster a algún proyecto existente, lo que quiere decir si en un futuro queremos escalar el proyecto a más clústeres esta es la parte donde deben ser añadidos, al finalizar nos da un total del costo del servicio. Seleccionamos **create cluster**.
+
+![image](https://user-images.githubusercontent.com/33168405/233979396-c84cb06b-215b-4f6e-b703-f4a227042969.png)
+
+Puede tomar un tiempo en configurarse el entorno pero estará listo cuando aparezca una interfaz como la siguiente:
+![image](https://user-images.githubusercontent.com/33168405/233980088-50d2f84f-a127-4db2-b43d-927421a03189.png)
+
+Es importante tener a la mano el cluster ID pues se usará para pasos siguientes.
+######## Deploy
+Ahora es necesario autenticarnos con (doctl)[https://docs.digitalocean.com/reference/doctl/how-to/install/]
+Es necesario tener los archivos que utilizaremos en una sola carpeta, abrimos una consola de comandos en esa carpeta, en esa consola ejecutamos el comando
+
+```shell
+docker build -t my-python-app .
+```
+
+
+
 

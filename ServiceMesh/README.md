@@ -15,12 +15,12 @@ Istio es compatible con múltiples plataformas y entornos, incluyendo Kubernetes
 2. Instalar [Istio](https://github.com/istio/istio/releases/tag/1.17.2), Istio e istioctl, de acuerdo con el sistema operativo.
 3. Una vez reconocido el comando `istioctl` creamos el perfil con el comando
 ```shell
-istioctl install --set profile=demo -y
+$ istioctl install --set profile=demo -y
 ```
 4. Ejecutamos el comando
 ```shell
-kubectl -n istio-system get pods
-``
+$ kubectl -n istio-system get pods
+```
 Este comando nos enlista las dependencias necesarias para monitoreo, como: grafana, prometeus, kiali. En este caso las instalaré individualmente.
 
 ### Kiali
@@ -35,24 +35,24 @@ helm install kiali kiali/kiali-server --namespace istio-system
 ### Grafana y Prometeus
 1.1. Ejecutar
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.11/samples/addons/grafana.yaml
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.11/samples/addons/prometheus.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.11/samples/addons/grafana.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.11/samples/addons/prometheus.yaml
 ```
 
 Podemos ejecutar de nuevo el comando
 ```shell
-kubectl -n istio-system get pods
-``
+$ kubectl -n istio-system get pods
+```
 Y de tener las dependencias listas la salida será algo así:
 ![image](https://user-images.githubusercontent.com/33168405/236783571-d7710418-8a29-4141-a20a-1bdc9b8307e5.png)
 
 5. Antes de iniciar kiali debemos etiquetar el namespace llamado default para que istio pueda monitorearlo, ejecutamos
 ```shell
-kubectl label namespace default istio-injection=enabled
+$ kubectl label namespace default istio-injection=enabled
 ```
 6. Podemos acceder a la interfaz web de kiali con el siguiente comando
 ```shell
-istioctl dashboard kiali
+$ istioctl dashboard kiali
 ```
 Es posible que socilite un token, lo generamos con uno de los siguientes comandos:
 ```shell

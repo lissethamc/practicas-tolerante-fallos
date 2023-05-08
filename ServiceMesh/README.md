@@ -53,4 +53,17 @@ kubectl label namespace default istio-injection=enabled
 6. Podemos acceder a la interfaz web de kiali con el siguiente comando
 ```shell
 istioctl dashboard kiali
-``
+```
+Es posible que socilite un token, lo generamos con uno de los siguientes comandos:
+```shell
+kubectl exec $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') -n istio-system -- cat /var/run/secrets/kubernetes.io/serviceaccount/token
+```
+o si diera problemas en windows, podemos usar
+```shell
+kubectl exec $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') -n istio-system -- cat /var/run/secrets/kubernetes.io/serviceaccount/token | Out-String | clip.exe
+```
+Este segundo comando lo guarda automáticamente en el portapapeles.
+
+Una vez dentro, esta es la interfaz
+![image](https://user-images.githubusercontent.com/33168405/236784907-182c6a45-9006-4e1c-bc7a-74c3e5f08df7.png)
+

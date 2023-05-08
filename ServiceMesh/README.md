@@ -64,8 +64,10 @@ kubectl exec $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items
 ```
 Este segundo comando lo guarda automáticamente en el portapapeles.
 
-Una vez dentro, esta es la interfaz
+Una vez dentro, esta es la interfaz:
+
 ![image](https://user-images.githubusercontent.com/33168405/236784907-182c6a45-9006-4e1c-bc7a-74c3e5f08df7.png)
 
-Seleccionamos Graph en la columna de la izquierda, 
+Seleccionamos Graph en la columna de la izquierda, en el ejemplo tenemos una aplicación web a la que le generamos tráfico http e icmp, es posible visualizarlo en el Grafo
+![image](https://user-images.githubusercontent.com/33168405/236785835-bb3300fc-61f2-4fc2-86ef-04fc9df9ec56.png)
 

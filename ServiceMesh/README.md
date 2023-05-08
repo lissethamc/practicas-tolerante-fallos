@@ -67,3 +67,5 @@ Este segundo comando lo guarda automáticamente en el portapapeles.
 Una vez dentro, esta es la interfaz
 ![image](https://user-images.githubusercontent.com/33168405/236784907-182c6a45-9006-4e1c-bc7a-74c3e5f08df7.png)
 
+Seleccionamos Graph en la columna de la izquierda, 
+

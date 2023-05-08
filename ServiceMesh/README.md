@@ -71,3 +71,4 @@ Una vez dentro, esta es la interfaz:
 Seleccionamos Graph en la columna de la izquierda, en el ejemplo tenemos una aplicación web a la que le generamos tráfico http e icmp, es posible visualizarlo en el Grafo
 ![image](https://user-images.githubusercontent.com/33168405/236785835-bb3300fc-61f2-4fc2-86ef-04fc9df9ec56.png)
 
+![image](https://user-images.githubusercontent.com/33168405/236786282-814a751c-50a7-4d0e-9696-df04113c82c8.png)

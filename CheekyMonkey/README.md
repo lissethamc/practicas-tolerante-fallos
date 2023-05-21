@@ -35,5 +35,29 @@ Porque en la libreria pymunk fue removido `_pymunk.inf`
 
 6. Para asegurarnos de que esté funcionando en la consola enlistamos los pods activos con `kubectl get pods`, hay que revisar el campo **age** para ver cuanto tiempo llevan activos los pods antes de ejecutar cheekymonkey
 
+8. Podemos excluir pods que no queremos que sean destruidos al poner sus namespaces en la bandera de exclude
+![image](https://github.com/lissethamc/practicas-tolerante-fallos/assets/33168405/a7ce540b-08d2-4960-8cfa-ffae4252fd02)
+ 
+```shell
+python cheekymonkey.py --exclude kube-system kube-public kube-node-lease istio-system
+```
+Con este comando excluimos kube-system, kube-public, kube-node-lease, istio-system
+
+Con esto ya se ejecuta nuestra ventana del cheekymonkey, aunque hubo un error y solo permite eliminar un pod y después de esto crashea el juego
+![image](https://github.com/lissethamc/practicas-tolerante-fallos/assets/33168405/4b833a90-92f3-4c3a-a626-94da31f24dd4)
+
+Para demostrar su funcionamiento primero enlistamos los pods que tenemos en DigitalOcean antes de la ejecución
+
+![image](https://github.com/lissethamc/practicas-tolerante-fallos/assets/33168405/35a11785-5a7a-4009-bf14-22be17499608)
+
+Y esto es lo que aparece una vez se destruye un pod
+![image](https://github.com/lissethamc/practicas-tolerante-fallos/assets/33168405/afea8473-b709-4224-963f-01123f7b081e)
+
+Este es el listado de pods después de ejecutar cheekymonkey, podemos analizar que el pod de 40m se mantuvo, el de 12s pasó a ser de 104s y el de 51m terminó su ejecución y se levantó uno nuevo teniendo ahora 35s y el menor tiempo
+![image](https://github.com/lissethamc/practicas-tolerante-fallos/assets/33168405/f67c432f-79f9-49e2-9bbf-d8c4af8d3866)
+
+
+
+
 
 

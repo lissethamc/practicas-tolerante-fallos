@@ -9,5 +9,31 @@ Cheeky Monkey es una herramienta de ingeniería del caos para Kubernetes. Su fun
  
  ## Desarrollo
  
- 1. Hacer despliegue de un clúster de Kubernetes, para este ejemplo usaremos el mismo de (este ejemplo)[https://github.com/lissethamc/practicas-tolerante-fallos/tree/main/kubernetes]
- 
+ 1. Hacer despliegue de un clúster de Kubernetes, para este ejemplo usaremos el mismo de [este ejemplo](https://github.com/lissethamc/practicas-tolerante-fallos/tree/main/kubernetes)
+ 2. Clonar [este repositorio](https://github.com/richstokes/cheekymonkey) en la computadora local donde se administrará el clúster
+ 3. Opcional: es posible editar los valores del juego, en el archivo llamado `constance.py`
+ 4. Ejecutar dentro de la carpeta donde se clonó el repositorio el siguiente comando 
+ ```shell
+ pip install -r requirements.txt
+ ```
+ Nota: A día de realización de este documento, se han encontrado inconsistencias con las librerias que se piden instalar.
+por lo cual se recomienda quitar el numero de las versiones del archivo `requirements.txt` para que puedan ser instaladas
+![image](https://github.com/lissethamc/practicas-tolerante-fallos/assets/33168405/009ed068-7025-4d7e-9aa4-9d2e25bfdcb4)
+
+5. En el archivo `cheekymonkey.py`, en la línea 125 encontramos
+
+```python
+self.player = Player("./images/Char_Monkey_Free_Images/Animations/monkey_idle.png", x, y, scale=0.5, moment = _pymunk.inf, mass=1)
+```
+
+Es necesario sustituirla por
+
+```python
+self.player = Player("./images/Char_Monkey_Free_Images/Animations/monkey_idle.png", x, y, scale=0.5, moment = float("inf"), mass=1)
+```
+Porque en la libreria pymunk fue removido `_pymunk.inf`
+
+6. Para asegurarnos de que esté funcionando en la consola enlistamos los pods activos con `kubectl get pods`, hay que revisar el campo **age** para ver cuanto tiempo llevan activos los pods antes de ejecutar cheekymonkey
+
+
+
